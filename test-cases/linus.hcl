@@ -1,0 +1,8 @@
+person "linus" {
+  first_name = "Linus"
+  last_name = "Unnebäck"
+
+  github {
+    handle = "LinusU"
+  }
+}
