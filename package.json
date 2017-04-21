@@ -4,6 +4,7 @@
   "license": "MIT",
   "repository": "LinusU/gopher-hcl",
   "scripts": {
+    "prepare": "make build.js",
     "test": "standard && mocha"
   },
   "files": [
