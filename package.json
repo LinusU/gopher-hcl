@@ -2,5 +2,20 @@
   "name": "gopher-hcl",
   "version": "0.0.0",
   "license": "MIT",
-  "repository": "LinusU/gopher-hcl"
+  "repository": "LinusU/gopher-hcl",
+  "scripts": {
+    "test": "standard && mocha"
+  },
+  "files": [
+    "build.js",
+    "index.js"
+  ],
+  "devDependencies": {
+    "load-json-file": "^2.0.0",
+    "mocha": "^3.2.0",
+    "standard": "^10.0.2"
+  },
+  "dependencies": {
+    "mixin-deep": "^1.2.0"
+  }
 }
