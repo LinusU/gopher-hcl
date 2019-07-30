@@ -14,8 +14,8 @@ function dearrayify (data) {
 }
 
 function parseInput (input) {
-  if (Buffer.isBuffer(input)) return input
-  if (typeof input === 'string') return Buffer.from(input)
+  if (Buffer.isBuffer(input)) return new Uint8Array(input)
+  if (typeof input === 'string') return new Uint8Array(Buffer.from(input))
 
   throw new TypeError('Expected input to be a string or buffer')
 }

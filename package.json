@@ -11,12 +11,15 @@
     "build.js",
     "index.js"
   ],
-  "devDependencies": {
-    "load-json-file": "^2.0.0",
-    "mocha": "^3.2.0",
-    "standard": "^10.0.2"
-  },
   "dependencies": {
-    "mixin-deep": "^1.2.0"
+    "mixin-deep": "^2.0.1"
+  },
+  "devDependencies": {
+    "load-json-file": "^6.2.0",
+    "mocha": "^6.2.0",
+    "standard": "^13.1.0"
+  },
+  "engines": {
+    "node": ">=8"
   }
 }
