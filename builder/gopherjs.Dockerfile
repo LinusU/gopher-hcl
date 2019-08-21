@@ -1,9 +1,9 @@
 FROM golang:1.12
 
-RUN go get github.com/gopherjs/gopherjs
-RUN go get github.com/hashicorp/hcl
-
 ADD main.go ./
+RUN go get -d ./
+
+RUN go get github.com/gopherjs/gopherjs
 RUN gopherjs build main.go -o build.js
 
 CMD ["cat", "build.js"]

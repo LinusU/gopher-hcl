@@ -1,0 +1,267 @@
+{
+  "r": {
+    "b": [
+      {
+        "h": [
+          "group",
+          "ntp"
+        ],
+        "b": {
+          "b": [
+            {
+              "h": [
+                "task",
+                "Install ntp"
+              ],
+              "b": {
+                "a": {
+                  "module": {
+                    "s": "\"@amarillo/apt\"",
+                    "r": "EhwSFBYcGBo"
+                  },
+                  "name": {
+                    "s": "\"ntp\"",
+                    "r": "HigeICIoJCY"
+                  },
+                  "state": {
+                    "s": "\"present\"",
+                    "r": "KjQqLC40MDI"
+                  }
+                },
+                "r": "NjY"
+              },
+              "r": "ChAKDA4Q"
+            },
+            {
+              "h": [
+                "task",
+                "Configure ntp file"
+              ],
+              "b": {
+                "a": {
+                  "destination": {
+                    "s": "\"/etc/ntp.conf\"",
+                    "r": "WGJYWlxiXmA"
+                  },
+                  "module": {
+                    "s": "\"@amarillo/template\"",
+                    "r": "QEpAQkRKRkg"
+                  },
+                  "source": {
+                    "s": "\"ntp.conf.j2\"",
+                    "r": "TFZMTlBWUlQ"
+                  }
+                },
+                "r": "ZGQ"
+              },
+              "r": "OD44Ojw+"
+            },
+            {
+              "h": [
+                "task",
+                "Start the ntp service"
+              ],
+              "b": {
+                "a": {
+                  "enabled": {
+                    "s": "true",
+                    "r": "gRKBGIESgRSBFoEYgRaBGA"
+                  },
+                  "module": {
+                    "s": "\"@amarillo/systemd\"",
+                    "r": "bnhucHJ4dHY"
+                  },
+                  "name": {
+                    "s": "\"ntp\"",
+                    "r": "eoEEenx+gQSBAIEC"
+                  },
+                  "state": {
+                    "s": "\"started\"",
+                    "r": "gQaBEIEGgQiBCoEQgQyBDg"
+                  }
+                },
+                "r": "gRqBGg"
+              },
+              "r": "ZmxmaGps"
+            }
+          ],
+          "r": "gRyBHA"
+        },
+        "r": "AggCBAYI"
+      },
+      {
+        "h": [
+          "group",
+          "httpd"
+        ],
+        "b": {
+          "b": [
+            {
+              "h": [
+                "task",
+                "Install dependencies"
+              ],
+              "b": {
+                "a": {
+                  "module": {
+                    "s": "\"@amarillo/apt\"",
+                    "r": "gS6BOIEugTCBMoE4gTSBNg"
+                  },
+                  "name": {
+                    "s": "\"${item}\"",
+                    "r": "gTqBQIE6gTyBPoFAgT6BQA"
+                  },
+                  "state": {
+                    "s": "\"present\"",
+                    "r": "gUKBTIFCgUSBRoFMgUiBSg"
+                  },
+                  "with_items": {
+                    "s": "[\n      \"httpd\",\n      \"php\",\n      \"php-mysql\",\n      \"git\"\n    ]",
+                    "r": "gU6BVoFOgVCBUoFWgVKBVA"
+                  }
+                },
+                "r": "gViBWA"
+              },
+              "r": "gSaBLIEmgSiBKoEs"
+            },
+            {
+              "h": [
+                "task",
+                "Insert iptables rule for httpd"
+              ],
+              "b": {
+                "a": {
+                  "create": {
+                    "s": "true",
+                    "r": "gXqCAIF6gXyBfoIAgX6CAA"
+                  },
+                  "destination": {
+                    "s": "\"/etc/sysconfig/iptables\"",
+                    "r": "gW6BeIFugXCBcoF4gXSBdg"
+                  },
+                  "insertafter": {
+                    "s": "\"^:OUTPUT \"",
+                    "r": "ghaCIIIWghiCGoIgghyCHg"
+                  },
+                  "line": {
+                    "s": "\"-A INPUT -p tcp  --dport ${httpd_port} -j  ACCEPT\"",
+                    "r": "giKCLIIigiSCJoIsgiiCKg"
+                  },
+                  "module": {
+                    "s": "\"@amarillo/line-in-file\"",
+                    "r": "gWKBbIFigWSBZoFsgWiBag"
+                  },
+                  "regexp": {
+                    "s": "\"${httpd_port}\"",
+                    "r": "gg6CFIIOghCCEoIUghKCFA"
+                  },
+                  "state": {
+                    "s": "\"present\"",
+                    "r": "ggKCDIICggSCBoIMggiCCg"
+                  }
+                },
+                "r": "gi6CLg"
+              },
+              "r": "gVqBYIFagVyBXoFg"
+            },
+            {
+              "h": [
+                "task",
+                "Http service state"
+              ],
+              "b": {
+                "a": {
+                  "enabled": {
+                    "s": "true",
+                    "r": "glyCYoJcgl6CYIJigmCCYg"
+                  },
+                  "module": {
+                    "s": "\"@amarillo/systemd\"",
+                    "r": "gjiCQoI4gjqCPIJCgj6CQA"
+                  },
+                  "name": {
+                    "s": "\"httpd\"",
+                    "r": "gkSCToJEgkaCSIJOgkqCTA"
+                  },
+                  "state": {
+                    "s": "\"started\"",
+                    "r": "glCCWoJQglKCVIJaglaCWA"
+                  }
+                },
+                "r": "gmSCZA"
+              },
+              "r": "gjCCNoIwgjKCNII2"
+            }
+          ],
+          "r": "gmaCZg"
+        },
+        "r": "gR6BJIEegSCBIoEk"
+      },
+      {
+        "h": [
+          "group",
+          "Copy code"
+        ],
+        "b": {
+          "b": [
+            {
+              "h": [
+                "task",
+                "Copy the code from repository"
+              ],
+              "b": {
+                "a": {
+                  "destination": {
+                    "s": "\"/var/www/html/\"",
+                    "r": "gwyDFoMMgw6DEIMWgxKDFA"
+                  },
+                  "module": {
+                    "s": "\"@amarillo/git\"",
+                    "r": "gniDAoJ4gnqCfIMCgn6DAA"
+                  },
+                  "repository": {
+                    "s": "\"${repository}\"",
+                    "r": "gwSDCoMEgwaDCIMKgwiDCg"
+                  }
+                },
+                "r": "gxiDGA"
+              },
+              "r": "gnCCdoJwgnKCdIJ2"
+            },
+            {
+              "h": [
+                "task",
+                "Create the index.php file"
+              ],
+              "b": {
+                "a": {
+                  "dest": {
+                    "s": "\"/var/www/html/index.php\"",
+                    "r": "gzqDRIM6gzyDPoNEg0CDQg"
+                  },
+                  "module": {
+                    "s": "\"@amarillo/template\"",
+                    "r": "gyKDLIMigySDJoMsgyiDKg"
+                  },
+                  "src": {
+                    "s": "\"index.php.j2\"",
+                    "r": "gy6DOIMugzCDMoM4gzSDNg"
+                  }
+                },
+                "r": "g0aDRg"
+              },
+              "r": "gxqDIIMagxyDHoMg"
+            }
+          ],
+          "r": "g0iDSA"
+        },
+        "r": "gmiCboJogmqCbIJu"
+      }
+    ],
+    "r": "g0qDSg"
+  },
+  "s": [
+    ""
+  ],
+  "p": "AgIAAAoKAAICAAoKAgYKAAgIAAICABoaAgoOAAwMAAYGAAICABoaAAICBAoMAAgIAAYGAAICAAYGAAICAgoKAAoKAAYGAAICAA4OAAICAggIBAYIAAgIAAICACgoAgoOAAwMAAYGAAICACQkAAICBAoMAAwMAAYGAAICABYWAAICAgoKABYWAAYGAAICABoaAAICAggIBAYIAAgIAAICAC4uAgoOAAwMAAYGAAICACIiAAICBAoMAAgIAAYGAAICAAYGAAICAgoKAAoKAAYGAAICAA4OAAICAgoKAA4OAAYGAAgIAggIAgQEBAIEAAoKAAICAA4OAgYKAAgIAAICACwsAgoOAAwMAAYGAAICABoaAAICBAoMAAgIAAYGABISAgoKAAoKAAYGAAICAA4OAAICBAoMABQUAAYGAAICCgyBAgIICAQGCAAICAACAgBAQAIKDgAMDAAGBgACAgAsLAACAgQKDAAWFgAGBgACAgAuLgACAgIKCgAMDAAGBgAICAIKCgAKCgAGBgACAgAODgACAgIKCgAMDAAGBgAeHgIKCgAWFgAGBgACAgASEgACAgIKCgAICAAGBgACAgAyMgAyMgIICAQGCAAICAACAgAoKAIKDgAMDAAGBgACAgAiIgACAgQKDAAICAAGBgACAgAKCgACAgIKCgAKCgAGBgACAgAODgACAgIKCgAODgAGBgAICAIICAIEBAQCBAAKCgACAgAWFgIGCgAICAACAgA+PgIKDgAMDAAGBgACAgAaGgACAgQKDAAUFAAGBgAeHgIKCgAWFgAGBgACAgAcHAACAgIICAQGCAAICAACAgA2NgIKDgAMDAAGBgACAgAkJAACAgQKDAAGBgAGBgACAgAYGAACAgIKCgAICAAGBgACAgAuLgACAgIICAIEBAICAg"
+}

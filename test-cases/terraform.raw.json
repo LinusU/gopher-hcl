@@ -1,0 +1,82 @@
+{
+  "r": {
+    "b": [
+      {
+        "h": [
+          "resource",
+          "aws_key_pair",
+          "deployer"
+        ],
+        "b": {
+          "a": {
+            "key_name": {
+              "s": "\"deployer-key\"",
+              "r": "DhgOEBIYFBY"
+            },
+            "public_key": {
+              "s": "\"ssh-rsa AAAAB3NzaC1ycabVohBK41 email@example.com\"",
+              "r": "GiQaHB4kICI"
+            }
+          },
+          "r": "JiY"
+        },
+        "r": "AgwCBAYICgw"
+      },
+      {
+        "h": [
+          "resource",
+          "aws_instance",
+          "nginx"
+        ],
+        "b": {
+          "a": {
+            "ami": {
+              "s": "\"ami-379fbd50\"",
+              "r": "ND40Njg+Ojw"
+            },
+            "instance_type": {
+              "s": "\"t2.small\"",
+              "r": "QEpAQkRKRkg"
+            },
+            "key_name": {
+              "s": "\"${aws_key_pair.deployer.key_name}\"",
+              "r": "TFJMTlBSUFI"
+            }
+          },
+          "r": "VFQ"
+        },
+        "r": "KDIoKiwuMDI"
+      },
+      {
+        "h": [
+          "resource",
+          "aws_instance",
+          "redis"
+        ],
+        "b": {
+          "a": {
+            "ami": {
+              "s": "\"ami-aaf321c4\"",
+              "r": "YmxiZGZsaGo"
+            },
+            "instance_type": {
+              "s": "\"t2.micro\"",
+              "r": "bnhucHJ4dHY"
+            },
+            "key_name": {
+              "s": "\"${aws_key_pair.deployer.key_name}\"",
+              "r": "eoEAenx+gQB+gQA"
+            }
+          },
+          "r": "gQKBAg"
+        },
+        "r": "VmBWWFpcXmA"
+      }
+    ],
+    "r": "gQSBBA"
+  },
+  "s": [
+    ""
+  ],
+  "p": "AgIAABAQAAICABwcAAICABQUAgYKABAQAAoKAAICABgYAAICAgYGABQUAAYGAAICAGBgAAICAgQEBAIEABAQAAICABwcAAICAA4OAgYKAAYGAAYGAAICABgYAAICAgYGABoaAAYGAAICABAQAAICAgYGABAQAAYGAEZGAgQEBAIEABAQAAICABwcAAICAA4OAgYKAAYGAAYGAAICABgYAAICAgYGABoaAAYGAAICABAQAAICAgYGABAQAAYGAEZGAgQEAgIC"
+}

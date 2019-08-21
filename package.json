@@ -11,9 +11,6 @@
     "build.js",
     "index.js"
   ],
-  "dependencies": {
-    "mixin-deep": "^2.0.1"
-  },
   "devDependencies": {
     "load-json-file": "^6.2.0",
     "mocha": "^6.2.0",

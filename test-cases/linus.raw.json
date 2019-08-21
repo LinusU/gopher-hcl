@@ -1,0 +1,48 @@
+{
+  "r": {
+    "b": [
+      {
+        "h": [
+          "person",
+          "linus"
+        ],
+        "b": {
+          "a": {
+            "first_name": {
+              "s": "\"Linus\"",
+              "r": "ChQKDA4UEBI"
+            },
+            "last_name": {
+              "s": "\"Unnebäck\"",
+              "r": "FiAWGBogHB4"
+            }
+          },
+          "b": [
+            {
+              "h": [
+                "github"
+              ],
+              "b": {
+                "a": {
+                  "handle": {
+                    "s": "\"LinusU\"",
+                    "r": "JjAmKCowLC4"
+                  }
+                },
+                "r": "MjI"
+              },
+              "r": "IiQiJA"
+            }
+          ],
+          "r": "NDQ"
+        },
+        "r": "AggCBAYI"
+      }
+    ],
+    "r": "NjY"
+  },
+  "s": [
+    ""
+  ],
+  "p": "AgIAAAwMAAICAA4OAgYKABQUAAYGAAICAAoKAAICAgYGABISAAYGAAICABASAAICBAYIAAwMAgoOAAwMAAYGAAICAAwMAAICAggIAgQEAgIC"
+}
